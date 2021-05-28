@@ -6,7 +6,7 @@ from training import prediction
 from sendemail import sendmail
 import smtplib
 
-
+app = Flask(__name__)
 model= load('earthquakee.save')
 trans=load('earthquakee')
 modelcy=load('cyclone.save')
@@ -41,7 +41,6 @@ class School:
            self.lng  = lng
 schools = (School('earthquake',  location,   latitude, longitude),)
 schools_by_key = {school.key: school for school in schools}
-app = Flask(__name__)
 @app.route('/')
 def homepagea():
     return render_template('homepage.html', schools=schools)
